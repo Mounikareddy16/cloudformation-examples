@@ -33,7 +33,7 @@ pipeline {
              }
              post {
                 always {
-                     sh 'DEBUG=*snyk* monitor --org=mouni.prani16 --project-name=Mounikareddy16/cloudformation-examples'
+                     sh 'snyk monitor --org=mouni.prani16 --project-name=Mounikareddy16/cloudformation-examples'
                      cleanWs notFailBuild: true, patterns: [[pattern: 'iac_report.json', type: 'EXCLUDE']]
                }
            }
