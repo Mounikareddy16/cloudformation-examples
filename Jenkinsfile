@@ -26,14 +26,15 @@ pipeline {
  
         stage('Run IAC Scan') {
             steps {
-                sh 'snyk auth f557c5e3-ea14-40fe-ae60-71e7367f91fa'
-                sh 'snyk ignore --file-path=iac_report.json'
-                sh 'snyk iac test > iac_report.json --report'
+                sh '''
+                    snyk auth f557c5e3-ea14-40fe-ae60-71e7367f91fa'
+                    snyk ignore --file-path=iac_report.json'
+                    snyk iac test > iac_report.json --report'
+                '''
 
              }
              post {
                 always {
-                     sh 'snyk monitor --org=mouni.prani16 --project-name=Mounikareddy16/cloudformation-examples'
                      cleanWs notFailBuild: true, patterns: [[pattern: 'iac_report.json', type: 'EXCLUDE']]
                }
            }
