@@ -7,8 +7,6 @@ pipeline {
     }
     tools {
         nodejs 'NodeJS'  // Use the name of the NodeJS installation defined in Jenkins
-        maven 'maven'
-        jdk 'java'
     }
     stages {		
         stage('Checkout') {
@@ -24,19 +22,10 @@ pipeline {
                 ])
             }
         }       
-       
-        stage('Run SAST Test') {
-            steps {
-                sh '''
-                    #snyk auth ${SNYK_API_TOKEN}
-                    snyk auth 'f557c5e3-ea14-40fe-ae60-71e7367f91fa'
-                    #snyk code test 
-                '''
-               }
-            }
  
         stage('Run IAC Scan') {
             steps {
+                sh 'snyk auth 'f557c5e3-ea14-40fe-ae60-71e7367f91fa''
                 sh 'snyk iac test > iac_report.json --report'
 
              }
