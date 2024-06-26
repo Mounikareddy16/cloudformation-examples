@@ -4,6 +4,7 @@ pipeline {
     environment {
         GITHUB_CREDENTIALS_ID = 'git-creds'
         SNYK_API_TOKEN = credentials('test-snyk-api')
+        BRANCH_NAME = 'feature' 
     }
     tools {
         nodejs 'NodeJS'  // Use the name of the NodeJS installation defined in Jenkins
