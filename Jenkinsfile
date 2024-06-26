@@ -27,9 +27,9 @@ pipeline {
         stage('Run IAC Scan') {
             steps {
                 sh '''
-                    snyk auth f557c5e3-ea14-40fe-ae60-71e7367f91fa'
-                    snyk ignore --file-path=iac_report.json'
-                    snyk iac test > iac_report.json --report'
+                    snyk auth f557c5e3-ea14-40fe-ae60-71e7367f91fa
+                    snyk ignore --file-path=iac_report.json
+                    snyk iac test > iac_report.json --report
                 '''
 
              }
